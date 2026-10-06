@@ -1197,6 +1197,25 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
 .cn-fm textarea{width:100%;min-height:84px;border:1.5px solid var(--gray-200);border-radius:10px;padding:10px;font-family:inherit;font-size:13.5px}
 .cn-fm input[type=range]{width:100%}
 </style>
+<style id="cn-grad">
+/* gradasi layar awal: biru gelap bergantian & bergerak pelan (tidak terlalu terang) */
+.intro,.splash,.gesit-transition{
+ background-color:#061b60!important;
+ background-image:
+  radial-gradient(circle at 18% 14%,rgba(48,104,214,.30),transparent 46%),
+  radial-gradient(circle at 86% 82%,rgba(16,56,160,.28),transparent 50%),
+  linear-gradient(135deg,#02103a 0%,#0a2a7a 22%,#123f9e 38%,#061b60 56%,#0b3290 74%,#03133f 100%)!important;
+ background-size:140% 140%,150% 150%,320% 320%!important;
+ animation:cnGrad 18s ease-in-out infinite!important;
+}
+@keyframes cnGrad{
+ 0%,100%{background-position:0% 0%,100% 100%,0% 50%}
+ 33%{background-position:100% 30%,0% 70%,60% 100%}
+ 66%{background-position:40% 100%,70% 0%,100% 40%}
+}
+.intro-scrim{background:transparent!important}
+@media(prefers-reduced-motion:reduce){.intro,.splash,.gesit-transition{animation:none!important}}
+</style>
 </head>
 
 
@@ -1689,12 +1708,12 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
     <section class="screen" id="screen-account-settings"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Pengaturan akun</div></div></div><div class="content"><div class="settings-card"><div class="setting-row"><div><b>Ukuran font</b><small>Sesuaikan kenyamanan membaca</small></div><select onchange="document.documentElement.style.fontSize=this.value"><option value="100%">Normal</option><option value="112%">Besar</option><option value="125%">Sangat besar</option></select></div><div class="setting-row"><div><b>Bahasa</b><small>Pilih bahasa tampilan</small></div><select onchange="toast('Bahasa tampilan diubah')"><option>Bahasa Indonesia</option><option>English</option></select></div><div class="setting-row"><div><b>Notifikasi pekerjaan</b><small>Terima rekomendasi lowongan baru</small></div><div class="switch on" onclick="this.classList.toggle('on')"></div></div><div class="setting-row"><div><b>Mode tampilan</b><small>Gunakan tampilan yang nyaman</small></div><select><option>Terang</option><option>Kontras tinggi</option></select></div></div></div></section>
 
     <!-- FINANCE -->
-    <section class="screen" id="screen-profile-finance"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Rekap keuangan</div></div></div><div class="content"><div class="finance-summary"><div><small>Total pendapatan</small><strong>Rp4.200.000</strong></div><div><small>Komisi pekerja</small><strong>Rp210.000</strong></div><div><small>Arus bersih</small><strong>Rp3.990.000</strong></div></div><div class="finance-chart"><div class="section-title">Grafik pendapatan & potongan</div><div class="chart-bars"><div><i style="height:72%"></i><small>Jul</small></div><div><i style="height:88%"></i><small>Agu</small></div><div><i style="height:100%"></i><small>Sep</small></div><div><i style="height:62%"></i><small>Okt</small></div></div><div class="chart-legend"><span>● Pendapatan kotor</span><span>● Komisi pekerja 5%</span></div></div><div class="section-title">Rincian transaksi</div><div class="finance-row"><span>MC Gathering Kantor</span><b>+Rp300.000</b></div><div class="finance-row"><span>Komisi pekerja (5%)</span><b class="deduct">−Rp15.000</b></div><div class="finance-row"><span>Host Product Launch</span><b>+Rp400.000</b></div><div class="finance-row"><span>Komisi pekerja (5%)</span><b class="deduct">−Rp20.000</b></div><div class="finance-row"><span>Jaga Booth Skincare</span><b>+Rp250.000</b></div><div class="finance-row"><span>Komisi pekerja (5%)</span><b class="deduct">−Rp12.500</b></div></div></section>
+    <section class="screen" id="screen-profile-finance"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Rekap keuangan</div></div></div><div class="content"><div class="finance-summary"><div><small>Total pendapatan</small><strong>Rp4.200.000</strong></div><div><small>Arus bersih</small><strong>Rp4.200.000</strong></div></div><div class="finance-chart"><div class="section-title">Grafik pendapatan</div><div class="chart-bars"><div><i style="height:72%"></i><small>Jul</small></div><div><i style="height:88%"></i><small>Agu</small></div><div><i style="height:100%"></i><small>Sep</small></div><div><i style="height:62%"></i><small>Okt</small></div></div><div class="chart-legend"><span>● Pendapatan kotor</span></div></div><div class="section-title">Rincian transaksi</div><div class="finance-row"><span>MC Gathering Kantor</span><b>+Rp300.000</b></div><div class="finance-row"><span>Host Product Launch</span><b>+Rp400.000</b></div><div class="finance-row"><span>Jaga Booth Skincare</span><b>+Rp250.000</b></div></div></section>
 <!-- PORTFOLIO ADD -->
     <section class="screen" id="screen-portfolio-add"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Tambah pengalaman</div></div></div><div class="content"><div class="field"><label>Pekerjaan</label><input id="portJob" type="text" placeholder="Contoh: MC Wedding"></div><div class="field"><label>Waktu / tanggal</label><input id="portDate" type="date"></div><div class="field"><label>Rentang waktu</label><input type="text" placeholder="Contoh: 13.00–17.00 WIB"></div><div class="field"><label>Detail pekerjaan</label><textarea placeholder="Jelaskan peran, tanggung jawab, dan hasil pekerjaan"></textarea></div><div class="field"><label>Bukti atau sertifikat</label><label class="upload-box" for="portfolioEvidence">＋ Upload bukti / sertifikat</label><input id="portfolioEvidence" type="file" accept="image/*,.pdf" style="display:none"></div><button class="btn btn-primary btn-block" onclick="toast('Pengalaman ditambahkan dan menunggu konfirmasi'); goto('screen-seeker-profile')">Konfirmasi pengalaman</button></div></section>
 
     <!-- VERIFY -->
-    <section class="screen" id="screen-verify-experience"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Verifikasi pengalaman</div></div></div><div class="content"><div class="verify-box"><div class="verify-icon">✓</div><h2>Verifikasi pengalaman kerja</h2><p>Pengalaman yang sudah kamu masukkan akan diproses untuk mendapatkan status Verified.</p><div class="verify-price">Rp30.000</div><button class="btn btn-primary btn-block" id="verifyPayBtn" onclick="payVerification()">Bayar Rp30.000</button><div id="verifySuccess" class="verify-success" style="display:none">✓ Selamat! Akun Anda sekarang terverifikasi.</div></div></div></section>
+    <section class="screen" id="screen-verify-experience"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-seeker-profile')">←</button><div class="topbar-title">Verifikasi pengalaman</div></div></div><div class="content"><div class="verify-box"><div class="verify-icon">✓</div><h2>Verifikasi pengalaman kerja</h2><p>Pengalaman yang sudah kamu masukkan akan diproses untuk mendapatkan status Verified.</p><div class="verify-price">Rp49.900 <small style="font-size:14px;font-weight:600;color:var(--gray-500)">/ bulan</small></div><button class="btn btn-primary btn-block" id="verifyPayBtn" onclick="payVerification()">Bayar Rp49.900 / bulan</button><div id="verifySuccess" class="verify-success" style="display:none">✓ Selamat! Akun Anda sekarang terverifikasi.</div></div></div></section>
 
 
     <!-- ============================================================
@@ -1763,8 +1782,8 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
 
         <div class="toggle-row">
           <div>
-            <div class="toggle-label">⚡ Percepat pencarian (boost)</div>
-            <div class="toggle-sub">+Rp25.000 · listing diprioritaskan ke pekerja terdekat</div>
+            <div class="toggle-label">⚡ Sponsored job listing</div>
+            <div class="toggle-sub">+Rp29.900 / 24 jam · listing diprioritaskan ke pekerja terdekat</div>
           </div>
           <div class="switch" id="boostSwitch" onclick="this.classList.toggle('on')"></div>
         </div>
@@ -1799,7 +1818,7 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
   <button class="btn btn-outline btn-block" onclick="gpAddJob()" style="margin:4px 0 16px">+ Tambah pekerjaan</button>
   <div class="field"><label>Referensi visual (opsional)</label><label class="upload-box" for="gpRef"><span class="upload-icon">🖼️</span>Unggah contoh seragam / layout booth</label><input type="file" id="gpRef" accept="image/*" multiple style="display:none" onchange="previewUpload(this,'gpRefPrev')"><div class="upload-preview" id="gpRefPrev"></div></div>
  </div>
- <div class="content" style="padding-top:0;padding-bottom:150px"><label class="gp-ins"><input type="checkbox" id="gpIns"><span><b>Asuransi pekerja prioritas <em>+Rp10.000 / pekerja</em></b><small>Jika ada pekerja yang membatalkan dalam 3 hari, Gesit carikan pengganti terbaik secara prioritas. Jika tidak ada pengganti, upah pekerja tersebut dikembalikan ke kamu dan kamu mendapat token.</small></span></label></div>
+ <div class="content" style="padding-top:0;padding-bottom:150px"><label class="gp-ins"><input type="checkbox" id="gpIns"><span><b>Workforce protection (asuransi pekerja) <em>+3% dari nilai transaksi</em></b><small>Jika ada pekerja yang membatalkan dalam 3 hari, Gesit carikan pengganti terbaik secara prioritas. Jika tidak ada pengganti, upah pekerja tersebut dikembalikan ke kamu dan kamu mendapat token.</small></span></label></div>
  <div class="fixed-bottom-cta"><button class="btn btn-primary btn-block" onclick="gpSubmit()">Lanjut ke pembayaran</button></div>
 </section>
 <section class="screen" id="screen-gp-qris">
@@ -1848,10 +1867,10 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
         <div class="section-title">Rincian biaya</div>
         <div class="job-card" style="cursor:default;">
           <div class="row-between"><span class="muted" style="font-size:13px;">Upah (3 x Rp250.000)</span><span style="font-size:13px;">Rp750.000</span></div>
-          <div class="row-between" style="margin-top:8px;"><span class="muted" style="font-size:13px;">Biaya layanan platform (8%)</span><span style="font-size:13px;">Rp60.000</span></div>
-          <div class="row-between" style="margin-top:8px;"><span class="muted" style="font-size:13px;">Boost pencarian</span><span style="font-size:13px;">Rp25.000</span></div>
+          <div class="row-between" style="margin-top:8px;"><span class="muted" style="font-size:13px;">Success fee — Standard (8%)</span><span style="font-size:13px;">Rp60.000</span></div>
+          <div class="row-between" style="margin-top:8px;"><span class="muted" style="font-size:13px;">Sponsored job listing (24 jam)</span><span style="font-size:13px;">Rp29.900</span></div>
           <div class="divider"></div>
-          <div class="row-between"><span class="fw" style="font-size:14px;">Total dibayar</span><span class="job-fee">Rp835.000</span></div>
+          <div class="row-between"><span class="fw" style="font-size:14px;">Total dibayar</span><span class="job-fee">Rp839.900</span></div>
           <div class="hint">Dana akan ditahan platform (escrow) dan baru dicairkan ke pekerja setelah pekerjaan dikonfirmasi selesai.</div>
         </div>
       </div>
@@ -1863,7 +1882,7 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
         <div class="modal-sheet">
           <div class="modal-icon">✓</div>
           <h3>Pembayaran berhasil</h3>
-          <p>Dana Rp835.000 sudah diamankan sistem (escrow) dan akan cair ke pekerja begitu pekerjaan selesai dikonfirmasi.</p>
+          <p>Dana Rp839.900 sudah diamankan sistem (escrow) dan akan cair ke pekerja begitu pekerjaan selesai dikonfirmasi.</p>
           <button class="btn btn-primary btn-block" onclick="closeEscrowModal()">Lihat status pekerja</button>
         </div>
       </div>
@@ -1952,7 +1971,7 @@ img[alt="Gesit"],.splash-logo,.gesit-guide-robot img,.gesit-floating img,.gesit-
 
 <section class="screen" id="screen-poster-insight"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-poster-profile')">←</button><div class="topbar-title">Laporan kinerja & keuangan</div></div></div><div class="content" style="padding-top:16px"><div class="pchip" id="piTabs"></div><div id="piBody"></div></div></section>
 <section class="screen" id="screen-worker-monitor"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-poster-track')">←</button><div class="topbar-title">Pantau pekerja</div></div></div><div class="content" style="padding-top:16px" id="wmBody"></div></section>
-<section class="screen" id="screen-poster-transactions"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-poster-profile')">←</button><div class="topbar-title">Riwayat transaksi</div></div></div><div class="content"><div class="stat-grid"><div class="stat-card"><div class="stat-num">Rp9,4jt</div><div class="stat-label">Total transaksi</div></div><div class="stat-card"><div class="stat-num">24</div><div class="stat-label">Transaksi</div></div></div><div class="transaction-row"><div><b>Usher Konser — GBK</b><small>24 Sep 2026 · 10 pekerja · Berhasil</small></div><b>−Rp2.750.000</b></div><div class="transaction-row"><div><b>Jaga Booth Campaign Skincare</b><small>28 Sep 2026 · 5 pekerja · Escrow</small></div><b>−Rp1.250.000</b></div><div class="transaction-row"><div><b>MC Gathering Kantor</b><small>20 Sep 2026 · 1 pekerja · Berhasil</small></div><b>−Rp300.000</b></div><div class="transaction-row"><div><b>Boosting Subscription</b><small>18 Sep 2026 · 1 minggu · Berhasil</small></div><b>−Rp100.000</b></div><div class="transaction-row"><div><b>Data & Insight Subscription</b><small>10 Sep 2026 · 1 bulan · Berhasil</small></div><b>−Rp100.000</b></div><div class="transaction-row"><div><b>Pengembalian dana</b><small>5 Sep 2026 · Pembatalan posting · Berhasil</small></div><b style="color:var(--green)">+Rp250.000</b></div></div></section>
+<section class="screen" id="screen-poster-transactions"><div class="topbar"><div class="topbar-row"><button class="icon-btn" onclick="goto('screen-poster-profile')">←</button><div class="topbar-title">Riwayat transaksi</div></div></div><div class="content"><div class="stat-grid"><div class="stat-card"><div class="stat-num">Rp9,4jt</div><div class="stat-label">Total transaksi</div></div><div class="stat-card"><div class="stat-num">24</div><div class="stat-label">Transaksi</div></div></div><div class="transaction-row"><div><b>Usher Konser — GBK</b><small>24 Sep 2026 · 10 pekerja · Berhasil</small></div><b>−Rp2.750.000</b></div><div class="transaction-row"><div><b>Jaga Booth Campaign Skincare</b><small>28 Sep 2026 · 5 pekerja · Escrow</small></div><b>−Rp1.250.000</b></div><div class="transaction-row"><div><b>MC Gathering Kantor</b><small>20 Sep 2026 · 1 pekerja · Berhasil</small></div><b>−Rp300.000</b></div><div class="transaction-row"><div><b>Sponsored Job Listing</b><small>18 Sep 2026 · 7 hari · Berhasil</small></div><b>−Rp89.900</b></div><div class="transaction-row"><div><b>Candidate Curation</b><small>10 Sep 2026 · 1 bulan · Berhasil</small></div><b>−Rp189.000</b></div><div class="transaction-row"><div><b>Pengembalian dana</b><small>5 Sep 2026 · Pembatalan posting · Berhasil</small></div><b style="color:var(--green)">+Rp250.000</b></div></div></section>
   </div><!-- /phone-scroll -->
 
 <div class="gesit-register-overlay" id="gesitRegistration">
@@ -2617,11 +2636,12 @@ function openApplicationDetail(type){
 }
 function sendFeatureChat(){const i=document.getElementById('chatInput');if(!i||!i.value.trim())return;const box=document.getElementById('chatMessages');box.insertAdjacentHTML('beforeend',`<div class="chat-msg me">${i.value}</div><div class="chat-msg">Pesan kamu sudah diterima. Admin akan membalas melalui chat ini.</div>`);i.value='';}
 function changeCalendar(dir){toast(dir>0?'Jadwal bulan berikutnya':'Jadwal bulan sebelumnya');}
-function openBusinessPackages(){featureShow(`<div class="row-between"><div><h3 style="font-size:18px">Paket Langganan Bisnis</h3><p class="muted" style="font-size:11px;margin-top:4px">Pilih kebutuhan yang sesuai dengan bisnis kamu.</p></div><button class="icon-btn" style="background:var(--gray-100);color:var(--ink)" onclick="featureClose()">×</button></div><div class="package-grid" style="margin-top:16px">
-<div class="package-card"><h4>Data & Insight Subscription</h4><p>Rekomendasi tenaga kerja, rekomendasi waktu yang dibutuhkan, dan rekomendasi jumlah pembayaran.</p><div class="package-price">Rp100.000</div></div>
-<div class="package-card"><h4>Boosting Subscription</h4><p>Boosting agar postingan lebih cepat dilihat oleh customer.</p><div class="package-price">Rp100.000 / minggu</div></div>
-<div class="package-card"><h4>Unlimited Posting</h4><p>Kuota posting maksimal 2x dalam 1 bulan. Tambahan posting dikenakan Rp5.000 per penambahan.</p><div class="package-price">Rp5.000 / tambahan</div></div>
-<div class="package-card" style="background:var(--orange-light);border-color:var(--orange)"><h4>All In</h4><p>Data & Insight + Boosting + Unlimited Posting dalam 1 bulan.</p><div class="package-price">Rp400.000 / bulan</div></div></div>`);}
+function openBusinessPackages(){featureShow(`<div class="row-between"><div><h3 style="font-size:18px">Layanan Pemberi Kerja</h3><p class="muted" style="font-size:11px;margin-top:4px">Pilih kebutuhan yang sesuai dengan bisnis kamu.</p></div><button class="icon-btn" style="background:var(--gray-100);color:var(--ink)" onclick="featureClose()">×</button></div><div class="package-grid" style="margin-top:16px">
+<div class="package-card"><h4>Job Posting Credit</h4><p>1 token = 1 posting. 1 token Rp19.900 · 5 token Rp89.900 · 20 token Rp349.000.</p><div class="package-price">Mulai Rp19.900</div></div>
+<div class="package-card"><h4>Sponsored Job Listing</h4><p>Postingan tampil lebih awal ke pekerja yang cocok. 24 jam Rp29.900 · 3 hari Rp49.900 · 7 hari Rp89.900.</p><div class="package-price">Mulai Rp29.900</div></div>
+<div class="package-card"><h4>Candidate Curation</h4><p>Kurasi pelamar terbaik untuk postinganmu. Rp39.900 / postingan · Rp69.900 / minggu · Rp189.000 / bulan.</p><div class="package-price">Mulai Rp39.900</div></div>
+<div class="package-card"><h4>Workforce Protection</h4><p>Asuransi pekerja, opsional saat posting.</p><div class="package-price">3% dari nilai transaksi</div></div>
+<div class="package-card" style="background:var(--orange-light);border-color:var(--orange)"><h4>Success Fee</h4><p>Standard 8% (posting H-14 atau lebih) · Rapid 12% (H-4 s.d. H-13) · Emergency 15% (H-1 s.d. H-3).</p><div class="package-price">8% – 15%</div></div></div>`);}
 function openWorkerDetail(name,pct){featureShow(`<div class="row-between"><div><h3 style="font-size:18px">${name}</h3><p class="muted" style="font-size:11px;margin-top:4px">KPI pekerjaan saat ini</p></div><button class="icon-btn" style="background:var(--gray-100);color:var(--ink)" onclick="featureClose()">×</button></div><div class="job-card" style="margin-top:15px;cursor:default"><div class="row-between"><b>Progress keseluruhan</b><strong style="color:var(--orange-dark)">${pct}</strong></div><div class="kpi-meter"><i style="width:${pct}"></i></div><div class="activity-line"><span>Briefing selesai</span><b>✓</b></div><div class="activity-line"><span>Check-in lokasi</span><b>✓</b></div><div class="activity-line"><span>Tugas utama</span><b>${pct}</b></div><div class="activity-line"><span>Laporan pekerjaan</span><b>Menunggu</b></div></div><div class="chat-box"><b>Chat dengan pekerja</b><div class="chat-msg">Halo, bagaimana progres tugas hari ini?</div><div class="chat-input"><input id="chatInput" placeholder="Tulis pesan..."><button class="btn btn-primary btn-sm" onclick="sendFeatureChat()">Kirim</button></div></div>`);}
 function openPosterInsight(){goto('screen-poster-insight')}
 
@@ -2815,26 +2835,26 @@ function showQris(title,amount,onPaid,head){
       document.getElementById('qrDone').onclick=()=>{featureClose();onPaid&&onPaid();};},1100);};
 }
 
-/* ---------- Langganan bisnis ---------- */
+/* ---------- Layanan pemberi kerja ---------- */
 function planRender(){
   const el=document.getElementById('planCard'); if(!el) return;
-  const act=[SUB.insight&&'Data & Insight',SUB.boost&&'Boosting',SUB.unlimited&&'Posting Unlimited'].filter(Boolean);
-  el.innerHTML=`<div class="job-card" style="cursor:default;background:var(--orange-light);border-color:var(--orange-soft)"><div class="fw" style="font-size:13.5px">${act.length?'Paket aktif':'Paket Gratis'}</div><div class="muted" style="font-size:12px;margin-top:3px">${act.length?act.map(a=>'✓ '+a).join(' · '):'Kuota posting 2x / bulan · komisi standar'}${SUB.extra?` · +${SUB.extra} posting tambahan`:''}</div><button class="btn btn-primary btn-sm" style="margin-top:10px" onclick="openSubscription()">${act.length?'Kelola paket':'Upgrade ke Bisnis'}</button></div>`;
+  const tk=(window.gpTok?gpTok():0);
+  const act=[SUB.insight&&'Candidate Curation'].filter(Boolean);
+  el.innerHTML=`<div class="job-card" style="cursor:default;background:var(--orange-light);border-color:var(--orange-soft)"><div class="fw" style="font-size:13.5px">${act.length?'Layanan aktif':'Belum ada layanan aktif'}</div><div class="muted" style="font-size:12px;margin-top:3px">${act.length?act.map(a=>'✓ '+a).join(' · ')+' · ':''}Saldo kredit posting: ${tk} token · Success fee 8–15% sesuai waktu posting</div><button class="btn btn-primary btn-sm" style="margin-top:10px" onclick="openSubscription()">Beli layanan</button></div>`;
 }
-function buy(key,amount,qty){
-  const names={insight:'Data & Insight Subscription',boost:'Boosting Subscription (1 minggu)',post:'Tambahan Kuota Posting ×'+qty,all:'Paket All In (1 bulan)'};
-  showQris(names[key],amount,()=>{
-    if(key==='insight')SUB.insight=true; if(key==='boost')SUB.boost=true; if(key==='post'){SUB.extra+=qty;SUB.unlimited=true;}
-    if(key==='all'){SUB.insight=SUB.boost=SUB.unlimited=true;}
-    planRender();toast('Paket berhasil diaktifkan ✓');});
+function buyTok(i){
+  const T=[[1,19900],[5,89900],[20,349000]],k=T[i];
+  showQris('Job Posting Credit · '+k[0]+' token',k[1],()=>{window.gpAddTok&&gpAddTok(k[0]);planRender();toast(k[0]+' token masuk ke saldo ✓');});
 }
-function postQty(d){const q=document.getElementById('pq');let v=Math.min(20,Math.max(1,+q.textContent+d));q.textContent=v;document.getElementById('pqp').textContent=rp(v*5000);}
 function openSubscription(){
-  gShell(`<div class="row-between"><div><h3 style="font-size:18px">Upgrade Bisnis</h3><p class="muted" style="font-size:11px;margin-top:3px">Pilih paket, bayar via QRIS, langsung aktif.</p></div>${gClose}</div><div style="margin-top:14px">
-  <div class="pkg"><h4>📊 Data & Insight Subscription</h4><ul><li>Rekomendasi tenaga kerja (siapa yang paling cocok)</li><li>Rekomendasi waktu yang dibutuhkan</li><li>Rekomendasi jumlah pembayaran</li></ul><div class="row-between"><span class="pr">Rp100.000</span><button class="btn btn-primary btn-sm" onclick="buy('insight',100000)">${SUB.insight?'✓ Aktif':'Bayar QRIS'}</button></div></div>
-  <div class="pkg"><h4>🚀 Boosting Subscription</h4><p>Postingan kamu diprioritaskan agar lebih cepat dilihat oleh calon pekerja.</p><div class="row-between"><span class="pr">Rp100.000 / minggu</span><button class="btn btn-primary btn-sm" onclick="buy('boost',100000)">${SUB.boost?'✓ Aktif':'Bayar QRIS'}</button></div></div>
-  <div class="pkg"><h4>♾️ Kuota Posting Unlimited</h4><p>Kuota standar hanya <b>2x posting dalam 1 bulan</b>. Butuh lebih? Setiap tambahan posting <b>Rp5.000</b>.</p><div class="row-between"><div style="display:flex;align-items:center;gap:8px"><button class="btn btn-ghost btn-sm" onclick="postQty(-1)">−</button><b id="pq">1</b><button class="btn btn-ghost btn-sm" onclick="postQty(1)">+</button><span class="pr" id="pqp">Rp5.000</span></div><button class="btn btn-primary btn-sm" onclick="buy('post',5000*(+document.getElementById('pq').textContent),+document.getElementById('pq').textContent)">Bayar QRIS</button></div></div>
-  <div class="pkg hot"><h4>👑 Paket All In <span class="tag-best">Hemat</span></h4><p>Data & Insight + Boosting + Kuota Posting Unlimited, selama 1 bulan.</p><div class="row-between"><span class="pr">Rp400.000 / bulan</span><button class="btn btn-primary btn-sm" onclick="buy('all',400000)">Bayar QRIS</button></div></div></div>`);
+  const cr=[[1,'Rp19.900'],[5,'Rp89.900'],[20,'Rp349.000']].map((k,i)=>`<div class="row-between" style="margin-top:8px"><span class="pr">${k[0]} token · ${k[1]}</span><button class="btn btn-primary btn-sm" onclick="buyTok(${i})">Bayar QRIS</button></div>`).join('');
+  const cu=[['Per postingan','Rp39.900'],['Mingguan','Rp69.900'],['Bulanan','Rp189.000']].map((k,i)=>`<div class="row-between" style="margin-top:8px"><span class="pr">${k[0]} · ${k[1]}</span><button class="btn btn-primary btn-sm" onclick="gpKurBuy(${i})">Bayar QRIS</button></div>`).join('');
+  gShell(`<div class="row-between"><div><h3 style="font-size:18px">Layanan Pemberi Kerja</h3><p class="muted" style="font-size:11px;margin-top:3px">Pilih layanan, bayar via QRIS, langsung aktif.</p></div>${gClose}</div><div style="margin-top:14px">
+  <div class="pkg"><h4>🎟️ Job Posting Credit</h4><p>1 token = 1 posting.</p>${cr}</div>
+  <div class="pkg"><h4>🚀 Sponsored Job Listing</h4><p>Postingan tampil lebih awal ke pekerja yang cocok. Pilih durasi lewat tombol <b>Iklankan</b> di postingan aktif.</p><div class="row-between" style="margin-top:8px"><span class="pr">24 jam Rp29.900 · 3 hari Rp49.900 · 7 hari Rp89.900</span></div><button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="featureClose();goto('screen-poster-brief')">Pilih postingan</button></div>
+  <div class="pkg"><h4>⭐ Candidate Curation</h4><p>Kurasi pelamar terbaik untuk postinganmu.</p>${cu}</div>
+  <div class="pkg"><h4>🛡️ Workforce Protection</h4><p>Asuransi pekerja, opsional saat posting.</p><div class="row-between"><span class="pr">3% dari nilai transaksi</span></div></div>
+  <div class="pkg"><h4>⚡ Success Fee</h4><p>Dikenakan sesuai waktu posting sebelum hari kerja: Standard 8% (H-14 atau lebih) · Rapid 12% (H-4 s.d. H-13) · Emergency 15% (H-1 s.d. H-3).</p></div></div>`);
 }
 
 /* ---------- Pelamar ---------- */
@@ -2884,8 +2904,8 @@ function bestRun(){
 }
 function pickBest(){
   if(SUB.insight){bestRun();return;}
-  showQris('Data & Insight Subscription',100000,()=>{SUB.insight=true;planRender();bestRun();},
-   `<div class="lockbox" style="margin-top:12px"><div style="font-size:40px">🔒</div><b style="font-size:14px">Fitur "Pilih yang terbaik" belum aktif</b><div class="muted" style="font-size:11.5px;margin-top:4px">Bayar dulu Data & Insight Subscription (Rp100.000). Setelah bayar, 3 pelamar terbaik langsung terpilih otomatis.</div></div>`);
+  showQris('Candidate Curation · per postingan',39900,()=>{SUB.insight=true;planRender();bestRun();},
+   `<div class="lockbox" style="margin-top:12px"><div style="font-size:40px">🔒</div><b style="font-size:14px">Fitur "Pilih yang terbaik" belum aktif</b><div class="muted" style="font-size:11.5px;margin-top:4px">Aktifkan Candidate Curation dulu (Rp39.900 / postingan). Setelah bayar, 3 pelamar terbaik langsung terpilih otomatis.</div></div>`);
 }
 function openPosterApplicants(){appsRender();}
 
@@ -2954,9 +2974,9 @@ function insightRender(){
   if(piTab==='keu'){
     h=`<div class="kpi-row"><div class="kpi"><b>Rp9,4jt</b><small>Total pengeluaran 6 bulan</small><br><em>▲ 12% vs periode lalu</em></div><div class="kpi"><b>Rp247rb</b><small>Rata-rata biaya / pekerja</small><br><em>▼ 4% lebih hemat</em></div><div class="kpi"><b>38</b><small>Pekerja dibayar</small></div><div class="kpi"><b>24</b><small>Pekerjaan diposting</small></div></div>`
     +card('Pengeluaran bulanan vs anggaran','Realisasi dibanding target per bulan (Rp)',svgBar(M,[{n:'Realisasi',c:PAL[0],v:[980e3,1250e3,1420e3,1680e3,1900e3,2170e3]},{n:'Anggaran',c:'#D9D9D9',v:[1200e3,1300e3,1500e3,1700e3,2000e3,2200e3]}]))
-    +card('Pengeluaran per jenis','Komposisi biaya keseluruhan',svgDonut([{l:'Gaji pekerja',v:62,c:PAL[0]},{l:'Komisi GESIT',v:6,c:PAL[1]},{l:'Boosting',v:8,c:PAL[2]},{l:'Data & Insight',v:6,c:PAL[3]},{l:'Posting tambahan',v:3,c:PAL[4]},{l:'Transport & konsumsi',v:9,c:PAL[5]},{l:'Lainnya',v:6,c:PAL[6]}],'Rp9,4jt'))
+    +card('Pengeluaran per jenis','Komposisi biaya keseluruhan',svgDonut([{l:'Gaji pekerja',v:62,c:PAL[0]},{l:'Success fee',v:6,c:PAL[1]},{l:'Sponsored listing',v:8,c:PAL[2]},{l:'Candidate curation',v:6,c:PAL[3]},{l:'Job posting credit',v:3,c:PAL[4]},{l:'Transport & konsumsi',v:9,c:PAL[5]},{l:'Lainnya',v:6,c:PAL[6]}],'Rp9,4jt'))
     +card('Pengeluaran per jenis pekerjaan','Total biaya tiap posisi (Rp)',hbars([['Usher',3120e3],['Jaga booth',2450e3],['MC / Host',1650e3],['Crew event',1300e3],['Admin event',580e3],['Fotografer',300e3]],0,fK))
-    +card('Arus dana','Status dana yang dikelola lewat escrow',hbars([['Sudah cair',7350e3,'#2BA36B'],['Escrow (ditahan)',1250e3,'#F7A04A'],['Refund',250e3,'#9AA0A6'],['Komisi GESIT',560e3,'#3b63f2']],0,fK))
+    +card('Arus dana','Status dana yang dikelola lewat escrow',hbars([['Sudah cair',7350e3,'#2BA36B'],['Escrow (ditahan)',1250e3,'#F7A04A'],['Refund',250e3,'#9AA0A6'],['Success fee',560e3,'#3b63f2']],0,fK))
     +card('Jumlah pekerjaan per bulan','Selesai vs dibatalkan',svgBar(M,[{n:'Selesai',c:PAL[3],v:[2,3,3,4,5,6]},{n:'Dibatalkan',c:PAL[6],v:[0,1,0,1,0,1]}],v=>Math.round(v)));
   } else if(piTab==='perf'){
     h=`<div class="kpi-row"><div class="kpi"><b>87%</b><small>Rata-rata penyelesaian tugas</small></div><div class="kpi"><b>4.8</b><small>Rating tenaga kerja</small></div><div class="kpi"><b>92%</b><small>Kehadiran</small></div><div class="kpi"><b>89%</b><small>Ketepatan waktu</small></div></div>`
@@ -3090,7 +3110,7 @@ window.gpKurInv=function(pid,aid){cur=posts.filter(function(x){return x.id===pid
 window.gpCek=function(id,b){var p=posts.filter(function(x){return x.id===id})[0];if(b.disabled)return;b.disabled=true;b.innerHTML='<span class="gp-sp"></span>Mengkurasi pelamar…';
  setTimeout(function(){gShell('<div class="row-between"><div><h3 style="font-size:18px">Hasil Kurasi</h3><p class="muted" style="font-size:12px;margin-top:3px">'+p.t+' · '+p.jobs.length+' posisi</p></div>'+gClose+'</div><p class="muted" style="font-size:12.5px;margin:14px 0 12px">Pelamar terbaik untuk setiap posisi, dinilai dari rating, ketepatan waktu, pengalaman, dan kecocokan skill.</p>'+p.jobs.map(function(j){return kCard(j,p)}).join(''));
   b.disabled=false;b.innerHTML=SH+'Cek Kurasi'},2000)};
-function adRow(p){if(p.status!=='aktif')return '';return '<div class="gp-adrow"><button class="gp-ad" onclick="event.stopPropagation();gpAd(\''+p.id+'\')">'+RK+'Iklankan</button>'+(KUR?cekBtn(p):'')+(p.ad?'<span class="gp-adt">Diiklankan · est. '+p.ad+' dilihat</span>':'<span class="muted" style="font-size:11.5px">Jangkau lebih banyak pekerja</span>')+'</div>'}
+function adRow(p){if(p.status!=='aktif')return '';return '<div class="gp-adrow"><button class="gp-ad" onclick="event.stopPropagation();gpAd(\''+p.id+'\')">'+RK+'Iklankan</button>'+(KUR?cekBtn(p):'')+(p.ad?'<span class="gp-adt">Sponsored · '+p.ad+'</span>':'<span class="muted" style="font-size:11.5px">Jangkau lebih banyak pekerja</span>')+'</div>'}
 function badge(s){return s==='aktif'?'<span class="badge badge-verified">Aktif</span>':'<span class="badge badge-new">Selesai</span>'}
 function cnt(p,s){return p.ap.filter(function(a){return a.st===s}).length}
 function renderBrief(){
@@ -3098,7 +3118,7 @@ function renderBrief(){
  $('gpStats').innerHTML='<div class="stat-card"><div class="stat-num">'+a+'</div><div class="stat-label">Aktif</div></div><div class="stat-card"><div class="stat-num">'+s+'</div><div class="stat-label">Selesai</div></div><div class="stat-card"><div class="stat-num">'+n+'</div><div class="stat-label">Pelamar baru</div></div>';
  if(!$('gpTabs'))$('gpList').insertAdjacentHTML('beforebegin','<div class="chip-row" id="gpTabs"><span class="chip active" onclick="gpFilter(\'semua\',this)">Semua</span><span class="chip" onclick="gpFilter(\'aktif\',this)">Aktif</span><span class="chip" onclick="gpFilter(\'selesai\',this)">Selesai</span><span class="chip gp-kur" onclick="gpKur()">'+SH+'Layanan Kurasi Kredibel</span></div>');
  $('gpList').innerHTML=posts.filter(function(p){return tab==='semua'||p.status===tab}).map(function(p,x){return '<div class="job-card" onclick="gpOpen(\''+p.id+'\')"><div class="job-card-top"><div style="display:flex;gap:12px;align-items:center"><span class="gp-th" style="background-image:'+cover(+p.id.slice(1))+'"></span><div><div class="job-card-title">'+p.t+'</div><div class="job-card-meta"><i class=gi-pin></i>'+p.loc+' · <i class=gi-cal></i>'+p.date+'</div></div></div>'+badge(p.status)+'</div><div class="gp-chips">'+p.jobs.map(function(j){return '<span>'+j.n+' ×'+j.q+'</span>'}).join('')+'</div><div class="job-card-foot"><span class="muted" style="font-size:12px">'+cnt(p,'pelamar')+' pelamar · '+cnt(p,'diundang')+' diundang · '+cnt(p,'diterima')+' diterima</span><span class="job-fee">'+rp(tot(p))+'</span></div>'+adRow(p)+'</div>'}).join('')}
-window.gpForm=function(){if(USED&&TOK<10){gpGate();return}$('gpTitle').value='';$('gpLoc').value='';$('gpDate').value='';$('gpJobs').innerHTML='';jb=0;gpAddJob();goto('screen-gp-form')};
+window.gpForm=function(){if(USED&&TOK<1){gpGate();return}$('gpTitle').value='';$('gpLoc').value='';$('gpDate').value='';$('gpJobs').innerHTML='';jb=0;gpAddJob();goto('screen-gp-form')};
 var DMI=0,DM=[
  {t:'Jaga Booth Campaign Skincare',loc:'Mall Kelapa Gading, Jakarta Utara',tm:'10:00',j:[['Jaga booth',5,250000,'Menjaga booth, mendemokan produk skincare, dan membagikan sampel ke pengunjung. Penampilan rapi, ramah, dan tahan berdiri lama.',['Hadir 30 menit sebelum jam kerja','Target sampling 100 sampel per hari','Foto setup dan closing booth','Laporan stok dan voucher di akhir shift']],['Kasir / voucher',2,230000,'Mencatat penukaran voucher dan menjaga stok sampel. Teliti dan terbiasa memakai aplikasi kasir.',['Rekap voucher terpakai tanpa selisih','Laporan harian tepat waktu']]]},
  {t:'Usher Konser Musik — GBK',loc:'GBK Senayan, Jakarta Pusat',tm:'15:00',j:[['Usher',8,275000,'Mengarahkan penonton ke gate dan tribun, menjaga alur antrean, serta membantu tamu VIP. Siap bekerja hingga malam.',['Check-in lokasi sebelum gate dibuka','Foto kondisi area tugas di tengah acara','Laporan kendala maksimal 15 menit setelah kejadian']],['Admin registrasi',2,220000,'Memeriksa tiket dan mencatat kehadiran tamu di meja registrasi.',['Data kehadiran akurat','Antrean registrasi tidak lebih dari 5 menit']]]},
@@ -3110,17 +3130,19 @@ window.gpDemo=function(){var d=DM[DMI++%DM.length],dt=new Date();dt.setDate(dt.g
  toast('Form terisi otomatis, tinggal lanjut ke pembayaran')};
 window.gpAddJob=function(){jb++;var d=document.createElement('div');d.className='gp-job';d.innerHTML='<div class="gp-job-h"><b>Pekerjaan '+jb+'</b><button class="btn btn-sm btn-ghost" onclick="gpDel(this)">Hapus</button></div><div class="field"><label>Jenis pekerjaan</label><input type="text" class="j-n" placeholder="Ketik sendiri, contoh: MC, Usher, SPG"></div><div style="display:flex;gap:10px"><div class="field" style="flex:1"><label>Jumlah orang</label><input type="number" class="j-q" placeholder="5"></div><div class="field" style="flex:1"><label>Upah per orang (Rp)</label><input type="number" class="j-f" placeholder="250000"></div></div><div class="field"><label>Deskripsi & persyaratan</label><textarea placeholder="Jelaskan detail pekerjaan dan syarat yang dibutuhkan"></textarea></div><div class="field gp-kf"><div class="gp-kt"><label>Key Performance Index (KPI)</label><button type="button" class="gp-ai" onclick="gpAiKpi(this)"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.200L22 19l-2.200.8L19 22l-.8-2.200L16 19l2.200-.8z"/></svg>AI</button></div><div class="gp-kh">Isi apa saja yang kamu butuhkan untuk menilai kinerja pekerja ini.</div><div class="gp-kl"></div><button type="button" class="gp-ka" onclick="gpAddKpi(this)"><span>+</span> Tambah KPI</button></div>';$('gpJobs').appendChild(d);gpAddKpi(d.querySelector('.gp-ka'))};
 var RK='<svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1-2 4-2 6 2 0 5-.5 6-2M14 4c3-1 6-1 7-1 0 1 0 4-1 7l-6 6-5-5zM9 14l-4-1 3-4 4-1M10 19l1 4 4-3 1-4"/></svg>',SH='<svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6zM8.500 12l2.500 2.500 4.500-5"/></svg>';
-var PKA=[[100000,'100–200','Mulai'],[200000,'400–500','Populer'],[400000,'1.000–1.300','Maksimal']];
+var PKA=[[29900,'24 jam'],[49900,'3 hari'],[89900,'7 hari']];
 window.gpAd=function(id){var p=posts.filter(function(x){return x.id===id})[0];
- gShell('<div class="row-between"><div><h3 style="font-size:18px">Iklankan postingan</h3><p class="muted" style="font-size:12px;margin-top:3px">'+p.t+'</p></div>'+gClose+'</div><p class="muted" style="font-size:12.5px;margin:14px 0">Postinganmu ditampilkan lebih awal ke pekerja yang cocok. Pilih paket:</p>'
- +PKA.map(function(k,i){return '<button class="pk" onclick="gpAdBuy(\''+id+'\','+i+')"><div class="l"><b>'+k[1]+' pekerja dilihat'+(i===1?'<span class="tg">Paling dipilih</span>':'')+'</b><small>Estimasi jangkauan · berlaku 3 hari</small></div><div class="r">'+rp(k[0])+'</div></button>'}).join(''))};
-window.gpAdBuy=function(id,i){var p=posts.filter(function(x){return x.id===id})[0],k=PKA[i];showQris('Iklankan: '+p.t+' · estimasi '+k[1]+' dilihat',k[0],function(){p.ad=k[1];renderBrief()})};
-var KP=[['Mingguan',70000,'7 hari',''],['Bulanan',200000,'30 hari','Hemat 34%'],['Tahunan',1000000,'365 hari','Hemat 58%']];
+ gShell('<div class="row-between"><div><h3 style="font-size:18px">Sponsored job listing</h3><p class="muted" style="font-size:12px;margin-top:3px">'+p.t+'</p></div>'+gClose+'</div><p class="muted" style="font-size:12.5px;margin:14px 0">Postinganmu ditampilkan lebih awal ke pekerja yang cocok. Pilih durasi:</p>'
+ +PKA.map(function(k,i){return '<button class="pk" onclick="gpAdBuy(\''+id+'\','+i+')"><div class="l"><b>'+k[1]+(i===1?'<span class="tg">Paling dipilih</span>':'')+'</b><small>Tampil lebih awal ke pekerja yang cocok</small></div><div class="r">'+rp(k[0])+'</div></button>'}).join(''))};
+window.gpAdBuy=function(id,i){var p=posts.filter(function(x){return x.id===id})[0],k=PKA[i];showQris('Sponsored job listing: '+p.t+' · '+k[1],k[0],function(){p.ad=k[1];renderBrief()})};
+var KP=[['Per postingan',39900,'1 postingan',''],['Mingguan',69900,'7 hari',''],['Bulanan',189000,'30 hari','']];
 window.gpKur=function(){gShell('<div class="row-between"><h3 style="font-size:18px">Layanan Kurasi Kredibel</h3>'+gClose+'</div><div class="rc-note" style="margin-top:14px"><b style="color:var(--ink)">Apa yang kamu dapat:</b><br>• Layanan kurasi membantu memilihkan pelamar terbaik untuk setiap postingan.<br>• Kamu bisa mencari rekomendasi pekerja di Bursa Pekerja, dalam rentang 1 hari sekali.<br>• Pekerja yang direkomendasikan sudah dinilai dari rating, ketepatan waktu, dan verifikasi pengalaman.</div><button class="btn btn-primary btn-block" onclick="gpKurPk()">OK, lihat paket</button>')};
 window.gpKurPk=function(){gShell('<div class="row-between"><h3 style="font-size:18px">Pilih paket kurasi</h3>'+gClose+'</div><div style="margin-top:14px">'+KP.map(function(k,i){return '<button class="pk" onclick="gpKurBuy('+i+')"><div class="l"><b>'+k[0]+(k[3]?'<span class="tg">'+k[3]+'</span>':'')+'</b><small>Aktif '+k[2]+'</small></div><div class="r">'+rp(k[1])+'</div></button>'}).join('')+'</div>')};
 window.gpKurBuy=function(i){var k=KP[i];showQris('Layanan Kurasi Kredibel · '+k[0],k[1],function(){try{SUB.insight=true;planRender()}catch(e){}KUR=true;renderBrief();var c=document.querySelector('.gp-kur');if(c){c.classList.add('on');c.innerHTML=SH+'Kurasi aktif · '+k[0]}})};
-window.gpGate=function(){gShell('<div class="row-between"><h3 style="font-size:18px">Jatah harianmu habis</h3>'+gClose+'</div><div class="rc-note" style="margin-top:14px">Kamu sudah memakai jatah posting hari ini (1× posting per hari). Beli token untuk posting lagi.<br><b style="color:var(--ink)">1 posting = 10 token</b> · 10 token = Rp10.000</div><div class="rc-row t"><span>Saldo token</span><span>'+TOK+' token</span></div><button class="btn btn-primary btn-block" style="margin-top:8px" onclick="gpBuyTok()">Beli 10 token · Rp10.000</button>')};
-window.gpBuyTok=function(){showQris('Beli 10 token jatah posting',10000,function(){TOK+=10;toast('10 token masuk. Klik Posting lamaran lagi untuk lanjut')})};
+var TP=[[1,19900],[5,89900],[20,349000]];
+window.gpGate=function(){gShell('<div class="row-between"><h3 style="font-size:18px">Jatah harianmu habis</h3>'+gClose+'</div><div class="rc-note" style="margin-top:14px">Kamu sudah memakai jatah posting hari ini (1× posting per hari). Beli Job Posting Credit untuk posting lagi.<br><b style="color:var(--ink)">1 posting = 1 token</b></div><div class="rc-row t"><span>Saldo token</span><span>'+TOK+' token</span></div><div style="margin-top:10px">'+TP.map(function(k,i){return '<button class="pk" onclick="gpBuyTok('+i+')"><div class="l"><b>'+k[0]+' token</b></div><div class="r">'+rp(k[1])+'</div></button>'}).join('')+'</div>')};
+window.gpBuyTok=function(i){var k=TP[i];showQris('Job Posting Credit · '+k[0]+' token',k[1],function(){TOK+=k[0];try{planRender()}catch(e){}toast(k[0]+' token masuk. Klik Posting lamaran lagi untuk lanjut')})};
+window.gpAddTok=function(n){TOK+=n};window.gpTok=function(){return TOK};
 var KG=['Hadir minimal 30 menit sebelum jam kerja','Mengikuti briefing sampai selesai','Check-in lokasi tepat waktu lewat aplikasi','Berseragam dan berpenampilan sesuai arahan','Foto setup area tugas sebelum acara dimulai','Menjalankan tugas {j} sesuai SOP dan rundown','Merespons chat atau telepon koordinator maksimal 5 menit','Foto kondisi area tugas di tengah acara','Melayani tamu dengan ramah dan sopan','Melaporkan kendala maksimal 15 menit setelah kejadian','Menjaga kebersihan dan kerapian area tugas','Tidak meninggalkan posisi tanpa izin koordinator','Menjaga perlengkapan dan aset acara','Foto closing area dan serah terima perlengkapan','Mengisi laporan akhir shift sebelum pulang'];
 window.gpAiKpi=function(b){var f=b.closest('.gp-kf'),j=(f.closest('.gp-job').querySelector('.j-n').value.trim()||'pekerjaan ini').toLowerCase(),add=f.querySelector('.gp-ka');
  b.disabled=true;b.lastChild.textContent='Menyusun…';
@@ -3133,21 +3155,25 @@ window.gpDel=function(b){if($('gpJobs').children.length>1)b.closest('.gp-job').r
 window.gpSubmit=function(){var jobs=[];document.querySelectorAll('.gp-job').forEach(function(d){var n=d.querySelector('.j-n').value.trim();if(n)jobs.push({n:n,q:+d.querySelector('.j-q').value||1,f:+d.querySelector('.j-f').value||0,kpi:Array.prototype.map.call(d.querySelectorAll('.gp-kpi input'),function(x){return x.value.trim()}).filter(Boolean)})});
  if(!$('gpTitle').value.trim()||!jobs.length){toast('Isi judul dan minimal satu jenis pekerjaan');return}
  var d=$('gpDate').value;pend={id:'p'+pid++,t:$('gpTitle').value.trim(),loc:$('gpLoc').value.trim()||'—',date:d?new Date(d).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}):'—',jobs:jobs,status:'aktif',ap:[],boost:false};
- pend.ins=$('gpIns').checked;pend.insFee=pend.ins?pend.jobs.reduce(function(a,j){return a+j.q},0)*10000:0;pend.useTok=USED;pend.total=tot(pend)+pend.insFee;renderPay()};
+ pend.ins=$('gpIns').checked;pend.insFee=pend.ins?Math.round(tot(pend)*.03):0;
+ var dd=d?Math.round((new Date(d+'T00:00:00')-new Date(new Date().toDateString()))/864e5):null,sf=(dd===null||dd>=14)?['Standard',.08]:(dd>=4?['Rapid',.12]:['Emergency',.15]);
+ pend.sfName=sf[0];pend.sfRate=sf[1];pend.sfDays=dd;pend.sfFee=Math.round(tot(pend)*sf[1]);
+ pend.useTok=USED;pend.total=tot(pend)+pend.insFee+pend.sfFee;renderPay()};
 function qr(){var N=29,s=7,x=4242,o='';function r(){x=(x*1103515245+12345)&0x7fffffff;return x/0x7fffffff}
  for(var y=0;y<N;y++)for(var c=0;c<N;c++){if((c<8&&y<8)||(c>N-9&&y<8)||(c<8&&y>N-9))continue;if(r()>.5)o+='<rect x="'+c*s+'" y="'+y*s+'" width="'+s+'" height="'+s+'"/>'}
  [[0,0],[N-7,0],[0,N-7]].forEach(function(p){var X=p[0]*s,Y=p[1]*s;o+='<path fill-rule="evenodd" d="M'+X+' '+Y+'h'+7*s+'v'+7*s+'h-'+7*s+'zM'+(X+s)+' '+(Y+s)+'v'+5*s+'h'+5*s+'v-'+5*s+'zM'+(X+2*s)+' '+(Y+2*s)+'h'+3*s+'v'+3*s+'h-'+3*s+'z"/>'});
  return '<svg viewBox="0 0 '+N*s+' '+N*s+'" fill="#111522">'+o+'</svg>'}
 function renderPay(){var p=pend;$('gpPay').innerHTML='<h3 style="font-size:17px;margin-bottom:2px">Rincian pesanan</h3><div class="muted" style="font-size:12px;margin-bottom:12px">'+p.t+' · '+p.loc+' · '+p.date+'</div>'
  +p.jobs.map(function(j){return '<div class="rc-row"><span>'+j.n+' ×'+j.q+'<br><small class="muted">'+rp(j.f)+' / orang'+(j.kpi&&j.kpi.length?' · '+j.kpi.length+' KPI':'')+'</small></span><b>'+rp(j.q*j.f)+'</b></div>'}).join('')
- +(p.ins?'<div class="rc-row"><span>Asuransi pekerja prioritas<br><small class="muted">'+rp(10000)+' × '+(p.insFee/10000)+' pekerja</small></span><b>'+rp(p.insFee)+'</b></div>':'')
- +(p.useTok?'<div class="rc-row"><span>Jatah posting tambahan<br><small class="muted">Dipotong dari saldo token</small></span><b>−10 token</b></div>':'<div class="rc-row"><span>Jatah posting hari ini</span><b style="color:var(--green)">Gratis</b></div>')
+ +(p.ins?'<div class="rc-row"><span>Workforce protection (asuransi)<br><small class="muted">3% × '+rp(tot(p))+'</small></span><b>'+rp(p.insFee)+'</b></div>':'')
+ +'<div class="rc-row"><span>Success fee · '+p.sfName+' ('+Math.round(p.sfRate*100)+'%)<br><small class="muted">'+(p.sfDays===null?'Tanggal belum diisi':(p.sfDays>0?'Posting H-'+p.sfDays:'Posting di hari H'))+' · '+Math.round(p.sfRate*100)+'% × '+rp(tot(p))+'</small></span><b>'+rp(p.sfFee)+'</b></div>'
+ +(p.useTok?'<div class="rc-row"><span>Jatah posting tambahan<br><small class="muted">Dipotong dari saldo token</small></span><b>−1 token</b></div>':'<div class="rc-row"><span>Jatah posting hari ini</span><b style="color:var(--green)">Gratis</b></div>')
  +'<div class="rc-row t"><span>Total bayar</span><span>'+rp(p.total)+'</span></div>'
  +(p.ins?'<div class="rc-note">Asuransi aktif: jika ada pekerja yang membatalkan dalam 3 hari, Gesit mencarikan pengganti terbaik secara prioritas. Jika tidak ada, upah pekerja tersebut dikembalikan dan kamu mendapat token.</div>':'')
  +'<button class="btn btn-primary btn-block" onclick="renderQR()">Lanjut bayar dengan QRIS</button>';goto('screen-gp-qris')}
 window.renderQR=renderQR;
-function renderQR(){$('gpPay').innerHTML='<div class="gp-qrh"><b>QRIS</b><span>Scan dengan e-wallet atau m-banking</span></div><div class="gp-qr">'+qr()+'</div><div class="muted" style="text-align:center">Total pembayaran</div><div class="gp-amt">'+rp(pend.total)+'</div><div class="gp-sum">'+pend.jobs.map(function(j){return '<div class="row-between"><span>'+j.n+' ×'+j.q+'</span><b>'+rp(j.q*j.f)+'</b></div>'}).join('')+(pend.ins?'<div class="row-between"><span>Asuransi prioritas</span><b>'+rp(pend.insFee)+'</b></div>':'')+'</div><button class="btn btn-primary btn-block" onclick="gpPaid()">Saya sudah bayar</button>';goto('screen-gp-qris')}
-window.gpPaid=function(){if(USED)TOK-=10;USED=true;var n=pend.jobs.length,i;pend.jobs.forEach(function(j,k){for(i=0;i<3;i++)pend.ap.push(ap(j.n,i<2?'pelamar':'diundang'))});posts.unshift(pend);var id=pend.id;pend=null;
+function renderQR(){$('gpPay').innerHTML='<div class="gp-qrh"><b>QRIS</b><span>Scan dengan e-wallet atau m-banking</span></div><div class="gp-qr">'+qr()+'</div><div class="muted" style="text-align:center">Total pembayaran</div><div class="gp-amt">'+rp(pend.total)+'</div><div class="gp-sum">'+pend.jobs.map(function(j){return '<div class="row-between"><span>'+j.n+' ×'+j.q+'</span><b>'+rp(j.q*j.f)+'</b></div>'}).join('')+(pend.ins?'<div class="row-between"><span>Workforce protection (3%)</span><b>'+rp(pend.insFee)+'</b></div>':'')+'<div class="row-between"><span>Success fee '+pend.sfName+' ('+Math.round(pend.sfRate*100)+'%)</span><b>'+rp(pend.sfFee)+'</b></div>'+'</div><button class="btn btn-primary btn-block" onclick="gpPaid()">Saya sudah bayar</button>';goto('screen-gp-qris')}
+window.gpPaid=function(){if(USED)TOK-=1;USED=true;var n=pend.jobs.length,i;pend.jobs.forEach(function(j,k){for(i=0;i<3;i++)pend.ap.push(ap(j.n,i<2?'pelamar':'diundang'))});posts.unshift(pend);var id=pend.id;pend=null;
  $('gpPay').innerHTML='<div class="gp-ok">✓</div><h3 style="text-align:center;margin:10px 0 4px">Pembayaran berhasil</h3><p class="muted" style="text-align:center;margin-bottom:18px">Postingan kamu sudah aktif dan terlihat oleh pekerja.</p><button class="btn btn-primary btn-block" onclick="renderBriefGo()">Lihat riwayat postingan</button>';window.gpLast=id};
 window.renderBriefGo=function(){renderBrief();goto('screen-poster-brief')};
 window.gpOpen=function(id){cur=posts.filter(function(p){return p.id===id})[0];renderDetail();goto('screen-gp-detail')};
@@ -3388,16 +3414,16 @@ window.pfRender=function(){
  $('pfBody').innerHTML=h};
 
 /* ================= RIWAYAT & KEUANGAN ================= */
-var KC={'Upah pekerja':'#3b63f2','Komisi Gesit':'#8B5CF6','Boosting campaign':'#F7A04A','Data & Insight':'#2BA36B','Posting tambahan':'#F2C94C','Transport & konsumsi':'#2A7DE1','Pengembalian dana':'#9AA0A6'};
+var KC={'Upah pekerja':'#3b63f2','Success fee':'#8B5CF6','Sponsored listing':'#F7A04A','Candidate curation':'#2BA36B','Job posting credit':'#F2C94C','Transport & konsumsi':'#2A7DE1','Pengembalian dana':'#9AA0A6'};
 var RLx=['MC','Usher','Jaga booth','Admin registrasi','Fotografer','Host','Event crew','Brand ambassador'],EVx=['Wedding','Konser GBK','Pameran UMKM','Seminar Nasional','Product Launch','Gathering Kantor','Festival Kuliner','Campaign Skincare','Expo Otomotif','Wisuda Kampus'],C2=['Jakarta','Jakarta','Tangerang','Jakarta','Bekasi','Bandung','Depok','Jakarta','Surabaya','Bogor','Bali','Jakarta'],FE2=[350000,275000,250000,220000,400000,300000,260000,240000,320000,280000];
 var TX=[],push=function(d,t,c,cat,a,s,q){TX.push({d:d,t:t,city:c,cat:cat,amt:a,st:s,q:q||0})};
 for(var i=0;i<30;i++){var dy=Math.round(i*6.8+(i%3)),d=dago(dy),q=2+(i*3)%5,up=q*FE2[i%10],st=dy<9?'Escrow':'Berhasil',t=RLx[i%8]+' '+EVx[(i*3+1)%10],c=C2[i%12];
- push(d,t,c,'Upah pekerja',up,st,q);push(d,t,c,'Komisi Gesit',Math.round(up*.06/500)*500,st,q);
- var bo=i%3===0?100000:(i%5===1?50000:0);if(bo)push(d,t,c,'Boosting campaign',bo,'Berhasil');
+ push(d,t,c,'Upah pekerja',up,st,q);push(d,t,c,'Success fee',Math.round(up*.08/500)*500,st,q);
+ var bo=i%3===0?89900:(i%5===1?29900:0);if(bo)push(d,t,c,'Sponsored listing',bo,'Berhasil');
  if(i%4===1)push(d,t,c,'Transport & konsumsi',50000+(i%5)*25000,'Berhasil',q);
- if(i%7===2)push(d,t,c,'Posting tambahan',5000*(1+i%3),'Berhasil');
+ if(i%7===2)push(d,t,c,'Job posting credit',[19900,89900][i%2],'Berhasil');
  if(i===5||i===14||i===22)push(d,'Pembatalan: '+t,c,'Pengembalian dana',-Math.round(up*.15/1000)*1000,'Dikembalikan',q)}
-for(var m=3;m<=9;m++){var dd=new Date(2026,m,5);if(dd<=TODAY)push(dd,'Langganan Data & Insight','Jakarta','Data & Insight',100000,'Berhasil')}
+for(var m=3;m<=9;m++){var dd=new Date(2026,m,5);if(dd<=TODAY)push(dd,'Candidate Curation Bulanan','Jakarta','Candidate curation',189000,'Berhasil')}
 TX.sort(function(a,b){return b.d-a.d});TX.forEach(function(x,k){x.id='TRX-'+(2400-k)});
 var CITIES=[];TX.forEach(function(x){if(CITIES.indexOf(x.city)<0)CITIES.push(x.city)});CITIES.sort();
 window.KF_TOTAL=TX.reduce(function(s,x){return s+x.amt},0);
@@ -3416,11 +3442,11 @@ window.kfRender=function(){
  var mo={};L.forEach(function(x){if(x.amt>0){var k=x.d.getFullYear()*100+x.d.getMonth();mo[k]=(mo[k]||0)+x.amt}});var mk=Object.keys(mo).sort();
  var byC={},byCity={},mat={};pos.forEach(function(x){byC[x.cat]=(byC[x.cat]||0)+x.amt;byCity[x.city]=(byCity[x.city]||0)+x.amt;mat[x.city]=mat[x.city]||{};mat[x.city][x.cat]=(mat[x.city][x.cat]||0)+x.amt});
  var cats=Object.keys(byC).sort(function(a,b){return byC[b]-byC[a]}),cities=Object.keys(byCity).sort(function(a,b){return byCity[b]-byCity[a]});
- var bo=byC['Boosting campaign']||0,sm=[['Total pengeluaran',rp(gross-ref),'Setelah pengembalian dana'],['Jumlah transaksi',L.length,'Sesuai filter'],['Rata-rata per bulan',rp((gross-ref)/Math.max(1,mk.length)),mk.length+' bulan aktif'],['Boosting campaign',rp(bo),(gross?(bo/gross*100).toFixed(1).replace('.',','):'0')+'% dari total spend'],['Dana ditahan (escrow)',rp(esc),'Cair setelah pekerjaan selesai'],['Pengembalian dana',rp(ref),'Pembatalan pekerjaan']];
+ var bo=byC['Sponsored listing']||0,sm=[['Total pengeluaran',rp(gross-ref),'Setelah pengembalian dana'],['Jumlah transaksi',L.length,'Sesuai filter'],['Rata-rata per bulan',rp((gross-ref)/Math.max(1,mk.length)),mk.length+' bulan aktif'],['Sponsored listing',rp(bo),(gross?(bo/gross*100).toFixed(1).replace('.',','):'0')+'% dari total spend'],['Dana ditahan (escrow)',rp(esc),'Cair setelah pekerjaan selesai'],['Pengembalian dana',rp(ref),'Pembatalan pekerjaan']];
  var h='<div class="pf-kp kf-sm">'+sm.map(function(k){return '<div><small>'+k[0]+'</small><b>'+k[1]+'</b><em>'+k[2]+'</em></div>'}).join('')+'</div>';
  if(!L.length){$('kfRes').innerHTML=h+'<div class="pcard" style="text-align:center"><b>Tidak ada transaksi</b><div class="muted" style="font-size:12px">Ubah filter untuk melihat data lain.</div></div>';return}
  var topC=cats[0],topCity=cities[0];
- h+='<div class="pcard" style="background:var(--orange-light);border-color:var(--orange-soft);margin-bottom:14px"><b style="font-size:13px">💡 Ringkasan</b><div style="font-size:12.5px;margin-top:4px;line-height:1.55">Pengeluaran terbesar ada di <b>'+topC+'</b> ('+rp(byC[topC])+', '+(byC[topC]/gross*100).toFixed(0)+'%) dan lokasi terbanyak di <b>'+topCity+'</b> ('+(byCity[topCity]/gross*100).toFixed(0)+'% dari total). Boosting campaign menyerap '+(gross?(bo/gross*100).toFixed(1).replace('.',','):'0')+'% dari seluruh pengeluaran.</div></div>';
+ h+='<div class="pcard" style="background:var(--orange-light);border-color:var(--orange-soft);margin-bottom:14px"><b style="font-size:13px">💡 Ringkasan</b><div style="font-size:12.5px;margin-top:4px;line-height:1.55">Pengeluaran terbesar ada di <b>'+topC+'</b> ('+rp(byC[topC])+', '+(byC[topC]/gross*100).toFixed(0)+'%) dan lokasi terbanyak di <b>'+topCity+'</b> ('+(byCity[topCity]/gross*100).toFixed(0)+'% dari total). Sponsored listing menyerap '+(gross?(bo/gross*100).toFixed(1).replace('.',','):'0')+'% dari seluruh pengeluaran.</div></div>';
  h+='<div class="pa-two">'+card('Pengeluaran per kategori','Persentase dan nominal untuk tiap kebutuhan',svgDonut(cats.map(function(c){return {l:c,v:byC[c],c:KC[c]}}),fK(gross))+'<div style="margin-top:10px">'+rows(cats.map(function(c){return [c,byC[c],KC[c]]}),gross)+'</div>')
  +card('Pengeluaran per lokasi','Jakarta, Bandung, dan kota lainnya',rows(cities.map(function(c,i){return [c,byCity[c],PAL[i%PAL.length]]}),gross))
  +card('Pengeluaran per bulan','Total pengeluaran bulanan',svgBar(mk.map(function(k){return MON[+k%100]}),[{n:'Pengeluaran',c:'#3b63f2',v:mk.map(function(k){return mo[k]})}]))
@@ -3629,7 +3655,7 @@ function alerts(){var D=window.paData,A=[],WS=D.WS,J=D.JOBS;
  if(out.length)A.push({sv:'red',ic:'📍',t:out.length+' pekerja di luar radius lokasi',d:out.slice(0,3).map(function(w){return first(w.n)}).join(', ')+' jauh dari lokasi tugas',b:'Lihat peta',go:'paJob('+(oj?oj.id:0)+')'});
  var lag=[],mx=null;J.forEach(function(j){var l=D.ws(j).filter(function(w){return !w.out&&D.pct(w)<50});lag=lag.concat(l);if(!mx||l.length>mx.n)mx={n:l.length,j:j}});
  if(lag.length)A.push({sv:'orange',ic:'⏳',t:lag.length+' pekerja belum menyelesaikan KPI',d:'Terbanyak di '+mx.j.t,b:'Cek KPI',go:'paJob('+mx.j.id+')'});
- A.push({sv:'promo',ic:'🎁',t:'Promo: Paket Bisnis diskon 50%',d:'Komisi lebih rendah dan posting tanpa batas, minggu ini',b:'Ambil',go:'openSubscription()'});
+ A.push({sv:'promo',ic:'🎁',t:'Promo: Job Posting Credit 20 token',d:'Rp349.000 untuk 20 token, lebih hemat dari beli satuan',b:'Ambil',go:'openSubscription()'});
  return A}
 function donut(v,col,tot){var r=44,C=2*Math.PI*r,off=0,o='<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="'+r+'" fill="none" stroke="#eef0f6" stroke-width="16"/>';
  v.forEach(function(x,i){if(!x)return;var l=C*x/tot;o+='<circle cx="60" cy="60" r="'+r+'" fill="none" stroke="'+col[i]+'" stroke-width="16" stroke-dasharray="'+l+' '+(C-l)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 60 60)"/>';off+=l});
@@ -3841,7 +3867,7 @@ window.epRand=()=>epSet('https://i.pravatar.cc/300?img='+(1+Math.floor(Math.rand
 window.epPick=inp=>{const f=inp.files&&inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>epSet(e.target.result);r.readAsDataURL(f)};
 window.spSave=()=>{Object.assign(P,{name:$('epN').value.trim()||P.name,role:$('epR').value,loc:$('epL').value,bio:$('epB').value,ig:$('epIg').value,tt:$('epTt').value,li:$('epLi').value,cv:$('epCv').value,photo:eph});spRender();goto('screen-seeker-profile');toast('Profil berhasil diperbarui')};
 window.payVerification=()=>{const b=$('verifyPayBtn');b.disabled=true;b.textContent='Memproses pembayaran...';setTimeout(()=>{$('verifySuccess').style.display='block';P.verified=true;spRender();toast('Pembayaran berhasil — portofolio terverifikasi')},1000)};
-(()=>{const s=$('screen-verify-experience');s.querySelector('.topbar-title').textContent='Verifikasi portofolio';s.querySelector('h2').textContent='Verifikasi portofolio';s.querySelector('.verify-box p').textContent='Bayar sekali untuk mendapatkan badge Verified di profil dan portofoliomu.'})();
+(()=>{const s=$('screen-verify-experience');s.querySelector('.topbar-title').textContent='Verifikasi portofolio';s.querySelector('h2').textContent='Verifikasi portofolio';s.querySelector('.verify-box p').textContent='Berlangganan Rp49.900 per bulan untuk mendapatkan badge Verified di profil dan portofoliomu.'})();
 const pc=$('screen-seeker-profile').querySelector('.content'),pnav=$('screen-seeker-profile').querySelector('.profile-hero-card');
 pc.innerHTML='<div id="spBody"></div>';spRender();
 
@@ -3852,17 +3878,17 @@ const TX=DA.map((d,i)=>{const j=JB[i%6];return{t:j[0],skill:j[1],loc:j[2],fee:j[
 const MN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],DN=['Min','Sen','Sel','Rab','Kam','Jum','Sab'],DF=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const fd=d=>`${d.getDate()} ${MN[d.getMonth()]} ${d.getFullYear()}`,LIM={h:0,m:6,b:29,t:9999},PER=[['h','Harian'],['m','Mingguan'],['b','Bulanan'],['t','Tahunan']],COL=['#3b63f2','#6ea0ff','#9db4ff','#2848c9','#c4d2ff','#1b34a8'];
 let per='b',showAll=false;
-window.rkRender=()=>{const L=TX.filter(t=>t.d<=LIM[per]),gross=L.reduce((s,t)=>s+t.fee,0),cut=gross*.1,net=gross-cut;
- const bySk={},byDay=[0,0,0,0,0,0,0];L.forEach(t=>{(bySk[t.skill]=bySk[t.skill]||{n:0,v:0}).n++;bySk[t.skill].v+=t.fee*.9;byDay[t.date.getDay()]+=t.fee*.9});
+window.rkRender=()=>{const L=TX.filter(t=>t.d<=LIM[per]),gross=L.reduce((s,t)=>s+t.fee,0),cut=0,net=gross;
+ const bySk={},byDay=[0,0,0,0,0,0,0];L.forEach(t=>{(bySk[t.skill]=bySk[t.skill]||{n:0,v:0}).n++;bySk[t.skill].v+=t.fee;byDay[t.date.getDay()]+=t.fee});
  const sk=Object.entries(bySk).sort((a,b)=>b[1].n-a[1].n),mx=Math.max(...byDay,1),top=byDay.indexOf(Math.max(...byDay)),tv=sk.reduce((s,k)=>s+k[1].v,0)||1;let a=0;const cg=sk.map((k,i)=>{const s=a;a+=k[1].v/tv*100;return `${COL[i%6]} ${s}% ${a}%`}).join(',');
  const H=TX.slice(0,showAll?TX.length:6);
  $('rkBody').innerHTML=`<div class="rk-h" style="margin-top:6px">Riwayat pekerjaan</div>`+H.map(t=>`<div class="pf-box" onclick="rkOpen(${TX.indexOf(t)})">${GM}<div><b>${t.t}</b><small>${t.loc} • ${fd(t.date)} • ★ ${t.rating.toFixed(1)}</small></div><span class="pf-tag">${rpf(t.fee)}</span></div>`).join('')+`<button class="btn btn-ghost btn-block" onclick="rkAll()">${showAll?'Tampilkan lebih sedikit':'Lihat semua ('+TX.length+')'}</button>
 <div class="rk-h">Keuangan</div><div class="fbar">${PER.map(p=>`<button class="fb-pill ${p[0]===per?'active':''}" onclick="rkPer('${p[0]}')">${p[1]}</button>`).join('')}</div>
-<div class="rk-sum"><div class="big"><small>Pendapatan bersih</small><b>${rpf(net)}</b></div><div><small>Pendapatan kotor</small><b>${rpf(gross)}</b></div><div><small>Potongan komisi 10%</small><b>${rpf(-cut)}</b></div><div><small>Pekerjaan selesai</small><b>${L.length}</b></div></div>
+<div class="rk-sum"><div class="big"><small>Total pendapatan</small><b>${rpf(net)}</b></div><div><small>Pekerjaan selesai</small><b>${L.length}</b></div></div>
 <div class="rk-two"><div class="rk-card"><h4>Layanan paling banyak dikerjakan</h4>${sk.map(k=>`<div class="rk-hb"><span>${k[0]}</span><div><i style="width:${k[1].n/sk[0][1].n*100}%"></i></div><b>${k[1].n}×</b></div>`).join('')||'<small>Belum ada data</small>'}</div>
 <div class="rk-card"><h4>Komposisi penghasilan</h4><div class="rk-dn"><div class="rk-donut" style="background:conic-gradient(${cg||'#eef2ff 0 100%'})"></div><div class="rk-lg">${sk.map((k,i)=>`<span><i style="background:${COL[i%6]}"></i>${k[0]} ${Math.round(k[1].v/tv*100)}%</span>`).join('')}</div></div></div></div>
 <div class="rk-card" style="margin-top:12px"><h4>Penghasilan per hari</h4><small>Terbanyak di hari ${DF[top]}</small><div class="rk-bars">${[1,2,3,4,5,6,0].map(d=>`<div><i class="${d===top?'top':''}" style="height:${byDay[d]/mx*100}%"></i>${DN[d]}</div>`).join('')}</div></div>
-<div class="rk-h">Rincian per transaksi</div><div class="rk-card" style="padding:4px 14px">${L.map(t=>`<div class="rk-tx"><div><b>${t.t}</b><small>${fd(t.date)} • ${t.loc}</small></div><div class="r"><div>${rpf(t.fee)}</div><div class="cut">Komisi 10% ${rpf(-t.fee*.1)}</div><b>${rpf(t.fee*.9)}</b></div></div>`).join('')||'<p class="muted" style="padding:14px;font-size:13px">Belum ada transaksi pada periode ini.</p>'}</div>`};
+<div class="rk-h">Rincian per transaksi</div><div class="rk-card" style="padding:4px 14px">${L.map(t=>`<div class="rk-tx"><div><b>${t.t}</b><small>${fd(t.date)} • ${t.loc}</small></div><div class="r"><b>${rpf(t.fee)}</b></div></div>`).join('')||'<p class="muted" style="padding:14px;font-size:13px">Belum ada transaksi pada periode ini.</p>'}</div>`};
 window.rkPer=p=>{per=p;rkRender()};window.rkAll=()=>{showAll=!showAll;rkRender()};
 window.rkOpen=i=>{const t=TX[i],im=PORTFOLIO_IMAGES,cap=['foto_checkin.jpg','foto_lokasi.jpg','bukti_kpi.jpg','laporan_akhir.jpg'],src=[im.banner0,im.banner1,im.banner2,im.banner1];
  featureShow(SH(t.t)+`<p class="muted" style="font-size:12px;margin-top:4px">${t.loc} • ${fd(t.date)} • ★ ${t.rating.toFixed(1)} • ${rpf(t.fee)}</p><b style="font-size:14px;display:block;margin-top:14px">Pekerjaan yang dijalani</b>${TK[t.skill].map(x=>`<div class="rk-chk"><i>✓</i>${x}</div>`).join('')}<b style="font-size:14px;display:block;margin:14px 0 4px">Bukti pekerjaan</b><div class="rk-drive"><div class="rk-dh">${ic('<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>')}Gesit Drive / ${t.t}</div><div class="rk-dg">${src.map((s,k)=>`<figure><img src="${s}" alt=""><figcaption>${cap[k]}</figcaption></figure>`).join('')}</div></div>`)};
@@ -4267,7 +4293,7 @@ const money=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
 const head=(t,s)=>'<div class="row-between"><div><h3 style="font-size:18px">'+t+'</h3>'+(s?'<p class="muted" style="font-size:11px;margin-top:4px">'+s+'</p>':'')+'</div>'+gClose+'</div>';
 
 /* ===== AUTO MATCHING ===== */
-const PLANS=[['Mingguan','7 hari',100000,''],['Bulanan','30 hari',300000,'Hemat 25%'],['Tahunan','365 hari',700000,'Paling hemat']];
+const PLANS=[['Mingguan','7 hari',14900,''],['Bulanan','30 hari',34900,'']];
 let AM=null;
 const tb=document.querySelector('#screen-seeker-home .tb-actions');
 const amb=document.createElement('button');amb.className='am-btn';amb.id='amBtn';amb.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Auto Matching';amb.onclick=()=>amOpen();
@@ -4285,7 +4311,7 @@ window.amBuy=function(i){const p=PLANS[i];showQris('Auto Matching — '+p[0],p[2
 /* ===== RATE CARD ===== */
 let RC=[{n:'MC',m:'MC',p:150000},{n:'Host Padel',m:'Host',p:175000},{n:'Usher',m:'Usher',p:60000},{n:'Jaga Booth',m:'Jaga Booth',p:50000},{n:'Admin Event',m:'Admin Event',p:55000},{n:'Fotografer',m:'Fotografer',p:120000}];
 const MKT={MC:165000,'Host Padel':155000,Usher:68000,'Jaga Booth':45000,'Admin Event':58000,Fotografer:135000};
-let comp=false,tab='p';
+let comp=false,compSub=false,tab='p';
 const ports=m=>__PF.map((p,i)=>({p:p,i:i})).filter(x=>x.p.skill===m);
 const sr0=window.spRender;
 window.spRender=function(){sr0();inject()};
@@ -4302,7 +4328,7 @@ window.rcTab=function(t){tab=t;const ph=document.querySelector('#spBody .sp-ph')
  [...ph.children].forEach(e=>{if(!e.classList.contains('sp-tabs'))e.style.display=t==='p'?'':'none'});
  Q('rcBox').style.display=t==='r'?'block':'none';if(t==='r')rcRender()};
 function rcRender(){
- Q('rcBox').innerHTML='<div class="rc-comp" onclick="compOpen()"><div><b>Layanan Kompetitif</b><span>'+(comp?'✓ Harga sudah disesuaikan dengan pasar':'Cek harga wajar & kompetitif kamu')+'</span></div><em>'+(comp?'Lihat lagi':'Rp30.000')+'</em></div>'
+ Q('rcBox').innerHTML='<div class="rc-comp" onclick="compOpen()"><div><b>Layanan Kompetitif</b><span>'+(comp?'✓ Harga sudah disesuaikan dengan pasar':'Cek harga wajar & kompetitif kamu')+'</span></div><em>'+(comp?'Lihat lagi':(compSub?'Aktif':'Rp7.900 / klik'))+'</em></div>'
  +'<div class="rc-grid">'+RC.map((r,i)=>'<div class="rc-box" onclick="rcOpen('+i+')"><b>'+esc(r.n)+'</b><div class="pr">'+money(r.p)+' <small>/ jam</small></div><div class="ct">'+ports(r.m).length+' portofolio'+(comp?' · <span style="color:#2e8b57;font-weight:700">Kompetitif ✓</span>':'')+'</div></div>').join('')
  +'<div class="rc-box rc-add" onclick="rcForm()">+<small>Tambah harga</small></div></div>';
 }
@@ -4323,7 +4349,9 @@ window.rcAdd=function(){const n=Q('rfN').value.trim(),p=+Q('rfP').value;if(!n||!
 window.compOpen=function(){
  featureShow(head('Layanan Kompetitif')+'<div class="job-card" style="cursor:default;margin-top:14px;background:#f1f4ff"><p style="font-size:13.5px;line-height:1.65">Layanan kompetitif akan membantu anda menilai harga wajar dan kompetitif anda untuk meningkatkan undangan yang akan diberikan kepada pemberi kerja nantinya.</p></div><button class="btn btn-primary btn-block" style="margin-top:14px" onclick="compPay()">Oke</button>');
 };
-window.compPay=function(){showQris('Layanan Kompetitif',30000,compApply)};
+window.compPay=function(){if(compSub){compApply();return}
+ featureShow(head('Pilih skema Pricing Advisory','Cek harga wajar & kompetitif rate card kamu.')+'<div class="am-plan" onclick="compBuy(0)"><div><b>Per klik</b><small>Bayar tiap kali cek harga</small></div><strong>Rp7.900</strong></div><div class="am-plan" onclick="compBuy(1)"><div><b>Bulanan</b><small>Cek harga sepuasnya selama 30 hari</small></div><strong>Rp19.900</strong></div>')};
+window.compBuy=function(i){if(i===0)showQris('Pricing Advisory — per klik',7900,compApply);else showQris('Pricing Advisory — bulanan',19900,function(){compSub=true;compApply()})};
 function compApply(){
  const ch=RC.map(r=>{const old=r.p,nw=MKT[r.n]||Math.round(r.p*1.1/5000)*5000;r.p=nw;return{n:r.n,o:old,w:nw}});comp=true;rcRender();
  featureShow(head('Harga disesuaikan ✓','Berdasarkan analisis harga pasar event di Jabodetabek.')+'<div class="ok-banner" style="margin-top:12px">Harga rate card kamu otomatis diganti ke harga wajar & kompetitif.</div>'
